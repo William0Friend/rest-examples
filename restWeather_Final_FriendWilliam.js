@@ -1,46 +1,46 @@
 // A function to fetch weather data from OpenWeatherMap
-// I define a function fetchWeather() to fetch weather data from OpenWeatherMap.
+// define a function fetchWeather() to fetch weather data from OpenWeatherMap.
 async function fetchWeather() {
-    // I get the value of the "city" input element from the DOM.
+    // get the value of the "city" input element from the DOM.
     const city = document.getElementById("city").value;
   
-    // I define my OpenWeatherMap API key.
+    // define my OpenWeatherMap API key.
     const apiKey = "b9f8e9f9149a07239a5653bb118bdb77";
   
-    // I create the API request URL with the city name, API key, and metric units.
+    // create the API request URL with the city name, API key, and metric units.
     const url = `https://api.openweathermap.org/data/2.5/find?q=${city}&appid=${apiKey}&units=metric`;
   
-    // I check if the city input is empty, and if so, show an error message and return.
+    // check if the city input is empty, and if so, show an error message and return.
     if (city === "") {
-      showError("Please enter a city name, you left input blank");
+      alert("Please enter a city name, you left input blank");
       return;
     }
   
-    // I try to fetch the weather data from the API.
+    // try to fetch the weather data from the API.
     try {
-      // I fetch the data from the API using the URL.
+      // fetch the data from the API using the URL.
       const response = await fetch(url);
   
-      // I parse the JSON data from the response.
+      // parse the JSON data from the response.
       const data = await response.json();
   
-      // I check if the response is OK (status code 200-299).
+      // check if the response is OK (status code 200-299).
       if (response.ok) {
-        // I check if there are cities in the response data.
+        // check if there are cities in the response data.
         if (data.count > 0) {
-          // I call showWeather() with the cities data and initMap as a callback.
+          // call showWeather() with the cities data and initMap as a callback.
           showWeather(data.list, initMap);
         } else {
           // If no cities are found, I show an error message.
-          showError("No cities found with that name, please make sure you entered a legitimate city name, (100% city respresentation is not gauranteed.");
+              alert("No cities found with that name, please make sure you entered a legitimate city name, (100% city respresentation is not gauranteed.");
         }
       } else {
         // If the response is not OK, I show the error message from the API.
-        showError(data.message);
+        alert(data.message);
       }
     } catch (error) {
       // If there is an error fetching the data, I show a generic error message.
-      showError("Failed to fetch weather data. Please try again later.");
+      alert("Failed to fetch weather data. Please try again later.");
     }
   }
   
@@ -72,6 +72,7 @@ async function fetchWeather() {
     } catch (error) {
       // If there is an error fetching the state data, I log an error message.
       console.error("Failed to fetch state information.");
+      alert("Failed to fetch state information.");
     }
   
     // If there is no state information, I return an empty string.
@@ -133,11 +134,14 @@ async function fetchWeather() {
       // I create a stateText variable that includes the state information if available.
       const stateText = state ? `, ${state}` : "";
   
+       // Convert Celsius temperature to Fahrenheit
+      const tempCelsius = data.main.temp;
+      const tempFahrenheit = Math.round(tempCelsius * 1.8 + 32);
       // I append the weather information for the current city to the weatherHTML string.
       weatherHTML += `
         <div class="weather-city container col-12 col-md-6 col-lg-4 border border-dark  text-center ">
           <h2>${data.name}, ${data.sys.country}${stateText}</h2>
-          <p>Temperature: ${data.main.temp}°C</p>
+          <p>Temperature: ${tempCelsius}°C / ${tempFahrenheit}°F</p>
           <p>Weather: ${data.weather[0].description}</p>
           <p>Humidity: ${data.main.humidity}%</p>
           <p>Wind Speed: ${data.wind.speed} m/s</p>
@@ -165,18 +169,4 @@ async function fetchWeather() {
     }
   }
   
-  
-  //A function to display error messages
-  // I define a function showError() to display error messages.
-  function showError(message) {
-    // I get the weather-info and error-message elements from the DOM.
-    const weatherInfo = document.getElementById("weather-info");
-    const errorMessage = document.getElementById("error-message");
-  
-      // I clear the innerHTML of the weather-info element, as there's no weather information to display in case of an error.
-      weatherInfo.innerHTML = "";
-  
-      // I set the innerHTML of the error-message element to the provided error message.
-      errorMessage.innerHTML = message;
-  }
   
