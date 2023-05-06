@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  #error-message {
+    color: red;
+    margin-top: 1rem;
+  }
+  
+
+  /*weather3*/
+  .map {
+    height: 400px;
+    width: 100%;
+  }
+   

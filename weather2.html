@@ -17,21 +17,21 @@
 
   <!-- Custom JS -->
   <script src="weather2.js"></script>
-  <link rel="stylesheet" href="weather.css">
+  <!-- <link rel="stylesheet" href="weather.css"> -->
 
 </head>
 <body>
 
   <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Fixed navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="#">Rest</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="weather.html">Home <span class="sr-only">Weather</span></a>
+              <a class="nav-link" href="weather.html">Weather</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="weather2.html">Weather2</a>
@@ -45,46 +45,29 @@
               <li class="nav-item">
                 <a class="nav-link" href="finance2.html">Finance2</a>
               </li>
-
           </ul>
         </div>
       </nav>
-    </header>
+</header>
 
     <main>
-  <div class="container vh-100 d-flex justify-content-center align-items-center">
-    <div class="row">
-      <div class="col-md-8 mx-auto text-center">
-        <h1 class="display-4 mb-4">Weather App</h1>
-        <form>
-          <div class="input-group mb-3">
-            <input type="text" id="city" placeholder="Enter city name" class="form-control">
-            <button onclick="fetchWeather()" type="button" class="btn btn-primary">Get Weather</button>
+      <div class="container justify-content-center align-items-center mt-5">
+        <div class="row">
+          <div class="col-md-8 mx-auto text-center">
+            <h1 class="display-4 mb-4">Weather Rest App</h1>
+            <form>
+              <div class="input-group mb-3">
+                <input type="text" id="city" placeholder="Enter city name" class="form-control">
+                <button onclick="fetchWeather()" type="button" class="btn btn-primary">Get Weather</button>
+              </div>
+            </form>
           </div>
-
-          <!-- Country dropdown -->
-<select id="country" class="form-select" onchange="populateCities()">
-    <option value="">Select Country</option>
-    <!-- Add country options here -->
-  </select>
-  
-  <!-- City dropdown -->
-  <select id="city" class="form-select" onchange="fetchWeatherAndLocation()">
-    <option value="">Select City</option>
-    <!-- City options will be added dynamically -->
-  </select>
-  
-  <!-- Map container -->
-  <div id="map" style="width: 100%; height: 400px;"></div>
-  
-        </form>
-        <div id="weather-info" class="mt-3"></div>
-        <div id="error-message" class="mt-2"></div>
+        </div>
       </div>
-    </div>
-  </div>
-</main>
+      <div id="weather-info" class="mt-5"></div>
+      <div id="error-message" class="mt-5"></div> 
+      </main>
 </body>
 </html>
 
-\]+
+
